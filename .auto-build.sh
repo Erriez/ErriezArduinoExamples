@@ -24,7 +24,7 @@ function autobuild()
     platformio lib --global install https://github.com/bblanchon/ArduinoJson
     platformio lib --global install https://github.com/tobiasschuerg/InfluxDB-Client-for-Arduino
     platformio lib --global install https://github.com/knolleary/pubsubclient
-    platformio lib --global install https://github.com/PaulStoffregen/OneWire
+    platformio lib --global install "paulstoffregen/OneWire@^2.3.5"
     platformio lib --global install https://github.com/milesburton/Arduino-Temperature-Control-Library
     platformio lib --global install https://github.com/Erriez/ErriezBH1750
     platformio lib --global install https://github.com/Erriez/ErriezBMX280
