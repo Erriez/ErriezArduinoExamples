@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  mosquitto:
+    image: eclipse-mosquitto:latest
+    container_name: mosquitto
+    restart: always
+    networks:
+      - web
+    ports:
+      - 1883:1883
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ${VOLUME_DIR}/mosquitto/config/mosquitto.conf:/mosquitto/config/mosquitto.conf
+      - ${VOLUME_DIR}/mosquitto/data:/mosquitto/data
+      - ${VOLUME_DIR}/mosquitto/log:/mosquitto/log
+
+networks:
+  web:
+    driver: bridge
+

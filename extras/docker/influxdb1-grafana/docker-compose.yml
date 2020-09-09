@@ -1,0 +1,52 @@
+version: "3"
+
+services:
+  influxdb:
+    image: influxdb:latest
+    container_name: influxdb
+    restart: always
+    networks:
+      - web
+    ports:
+      - 8086:8086
+    environment:
+      - INFLUXDB_ADMIN_USER=${INFLUXDB_ADMIN_USER}
+      - INFLUXDB_ADMIN_PASSWORD=${INFLUXDB_ADMIN_PASSWORD}
+    volumes:
+      - ${VOLUME_DIR}/influxdb:/var/lib/influxdb
+      - /etc/localtime:/etc/localtime:ro
+
+  chronograf:
+    image: chronograf:latest
+    container_name: chronograf
+    restart: always
+    command: --influxdb-url=http://influxdb:8086
+    networks:
+      - web
+    ports:
+      - 8888:8888
+    environment:
+      - INFLUXDB_INSECURE_SKIP_VERIFY=true
+      - INFLUXDB_USERNAME=${CHRONOGRAF_USERNAME}
+      - INFLUXDB_PASSWORD=${CHRONOGRAF_PASSWORD}
+    volumes:
+      - ${VOLUME_DIR}/chronograf:/var/lib/chronograf
+      - /etc/localtime:/etc/localtime:ro
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    restart: always
+    user: root
+    networks:
+      - web
+    ports:
+      - 3000:3000
+    environment:
+      - /etc/localtime:/etc/localtime:ro
+    volumes:
+      - ${VOLUME_DIR}/grafana:/var/lib/grafana
+
+networks:
+  web:
+    driver: bridge
