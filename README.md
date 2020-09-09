@@ -5,12 +5,9 @@
 This repository contains Arduino examples for a various amount of hardware, sensors and devices.
 
 
-## Library installation
-
-Please refer to the [Wiki](https://github.com/Erriez/ErriezArduinoLibraries/wiki) page.
-
-
-## More Arduino Libraries from Erriez
+## Library dependencies
 
 * [Erriez Libraries](https://github.com/Erriez/ErriezArduinoLibraries)
 
+Please refer to the [Wiki](https://github.com/Erriez/ErriezArduinoLibraries/wiki) page for 
+installation.

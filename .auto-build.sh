@@ -14,7 +14,7 @@ echo "Starting auto-build script..."
 function autobuild()
 {
     # Set environment variables
-    BOARDS_AVR="--board uno --board megaatmega2560 --board leonardo"
+    BOARDS_AVR="--board uno --board leonardo"
     BOARDS_ARM="--board due"
     ESP8266="--board d1_mini"
     ESP32="--board lolin_d32"
@@ -25,10 +25,12 @@ function autobuild()
     platformio lib --global install https://github.com/tobiasschuerg/InfluxDB-Client-for-Arduino
     platformio lib --global install https://github.com/knolleary/pubsubclient
     platformio lib --global install "paulstoffregen/OneWire@^2.3.5"
+    platformio lib --global install "bitbucket-fmalpartida/LiquidCrystal"
     platformio lib --global install https://github.com/milesburton/Arduino-Temperature-Control-Library
     platformio lib --global install https://github.com/Erriez/ErriezBH1750
     platformio lib --global install https://github.com/Erriez/ErriezBMX280
     platformio lib --global install https://github.com/Erriez/ErriezDHT22
+    platformio lib --global install https://github.com/Erriez/ErriezDS1302
     platformio lib --global install https://github.com/Erriez/ErriezDS1307
     platformio lib --global install https://github.com/Erriez/ErriezDS3231
     platformio lib --global install https://github.com/Erriez/ErriezINA219
@@ -64,7 +66,7 @@ function autobuild()
     platformio ci --lib="." ${BOARDS_AVR} ${BOARDS_ARM} ${ESP8266} ${ESP32} examples/Sensors/Temperature/LM35/LM35.ino
     platformio ci --lib="." ${BOARDS_AVR} ${BOARDS_ARM} ${ESP8266} ${ESP32} examples/Sensors/Voltage/INA219_Power_Sensor/INA219_Power_Sensor.ino
     platformio ci --lib="." ${BOARDS_AVR} ${BOARDS_ARM} ${ESP8266} ${ESP32} examples/Sensors/Weather/BMX280/BMX280.ino
-    platformio ci --lib="." ${BOARDS_AVR} ${BOARDS_ARM} ${ESP8266} ${ESP32} examples/Timing/RTC/DS1302/DS1302.ino
+    platformio ci --lib="." ${BOARDS_AVR}               ${ESP8266} ${ESP32} examples/Timing/RTC/DS1302/DS1302.ino
     platformio ci --lib="." ${BOARDS_AVR} ${BOARDS_ARM} ${ESP8266} ${ESP32} examples/Timing/RTC/DS1307/DS1307.ino
     platformio ci --lib="." ${BOARDS_AVR} ${BOARDS_ARM} ${ESP8266} ${ESP32} examples/Timing/RTC/DS3231/DS3231.ino
 
