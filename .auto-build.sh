@@ -37,6 +37,8 @@ function autobuild()
     platformio lib --global install https://github.com/Erriez/ErriezLM35
     platformio lib --global install https://github.com/Erriez/ErriezMHZ19B
     platformio lib --global install https://github.com/Erriez/ErriezRobotDyn4DigitDisplay
+    platformio lib --global install https://github.com/Erriez/ErriezTM1637
+    platformio lib --global install https://github.com/Erriez/ErriezTM1638
 
     echo "Install ESPSoftwareSerial into framework-arduinoespressif32 to prevent conflicts with generic name SoftwareSerial"
     mkdir -p ~/.platformio/packages/framework-arduinoespressif32/libraries
