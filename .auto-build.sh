@@ -37,6 +37,10 @@ function autobuild()
     platformio lib --global install https://github.com/Erriez/ErriezLM35
     platformio lib --global install https://github.com/Erriez/ErriezMHZ19B
 
+    echo "Install ESPSoftwareSerial into framework-arduinoespressif32 to prevent conflicts with generic name SoftwareSerial"
+    mkdir -p ~/.platformio/packages/framework-arduinoespressif32/libraries
+    platformio lib --storage-dir ~/.platformio/packages/framework-arduinoespressif32/libraries install "ESPSoftwareSerial"
+
     echo "Building cross-platform examples..."
     platformio ci --lib="." ${BOARDS_AVR} ${BOARDS_ARM} ${ESP8266} ${ESP32} examples/Arduino/ADC/ADCSerialPlotter/ADCSerialPlotter.ino
     platformio ci --lib="." ${BOARDS_AVR} ${BOARDS_ARM} ${ESP8266} ${ESP32} examples/Arduino/Build/BuildMarcos/BuildMarcos.ino
